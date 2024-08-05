@@ -7,6 +7,7 @@ export default defineConfig({
   title: 'My Awesome Project',
   description: 'A VitePress Site',
   srcDir: './src/docs',
+  base: '/blog-laterzc/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav,
