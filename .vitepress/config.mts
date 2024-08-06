@@ -17,7 +17,23 @@ export default defineConfig({
       label: '目录',
       level: [1, 6],
     },
+    lastUpdated: {
+      text: '最近更新于',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'medium',
+      },
+    },
+    search: {
+      provider: 'local',
+    },
+    logo: '/logo.png',
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
+    editLink: {
+      pattern: 'https://github.com/later-zc/blog-laterzc/tree/main/src/docs/:path',
+      text: '在 GitHub 上编辑此页',
+    },
+
+    socialLinks: [{ icon: 'github', link: 'https://github.com/later-zc/blog-laterzc' }],
   },
 })

@@ -14,7 +14,7 @@ hero:
       link: /guide/getting-started
     - theme: alt
       text: GitHub
-      link: https://github.com/vuejs/vitepress
+      link: https://github.com/later-zc/blog-laterzc
 
 features:
   - title: 'Vite: 无可比拟的开发体验'
