@@ -9,33 +9,33 @@ import {
 } from "./chunk-K3FWHB6B.js";
 
 // node_modules/vitepress/dist/client/theme-default/index.js
-import "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/fonts.css";
+import "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/fonts.css";
 
 // node_modules/vitepress/dist/client/theme-default/without-fonts.js
-import "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/vars.css";
-import "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/base.css";
-import "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/icons.css";
-import "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/utils.css";
-import "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/components/custom-block.css";
-import "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/components/vp-code.css";
-import "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/components/vp-code-group.css";
-import "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/components/vp-doc.css";
-import "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/components/vp-sponsor.css";
-import VPBadge from "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPBadge.vue";
-import Layout from "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/Layout.vue";
-import { default as default2 } from "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPBadge.vue";
-import { default as default3 } from "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPImage.vue";
-import { default as default4 } from "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPButton.vue";
-import { default as default5 } from "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPHomeContent.vue";
-import { default as default6 } from "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPHomeHero.vue";
-import { default as default7 } from "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPHomeFeatures.vue";
-import { default as default8 } from "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPHomeSponsors.vue";
-import { default as default9 } from "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPDocAsideSponsors.vue";
-import { default as default10 } from "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPSponsors.vue";
-import { default as default11 } from "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPTeamPage.vue";
-import { default as default12 } from "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageTitle.vue";
-import { default as default13 } from "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageSection.vue";
-import { default as default14 } from "D:/projects/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPTeamMembers.vue";
+import "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/vars.css";
+import "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/base.css";
+import "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/icons.css";
+import "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/utils.css";
+import "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/components/custom-block.css";
+import "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/components/vp-code.css";
+import "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/components/vp-code-group.css";
+import "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/components/vp-doc.css";
+import "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/styles/components/vp-sponsor.css";
+import VPBadge from "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPBadge.vue";
+import Layout from "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/Layout.vue";
+import { default as default2 } from "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPBadge.vue";
+import { default as default3 } from "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPImage.vue";
+import { default as default4 } from "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPButton.vue";
+import { default as default5 } from "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPHomeContent.vue";
+import { default as default6 } from "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPHomeHero.vue";
+import { default as default7 } from "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPHomeFeatures.vue";
+import { default as default8 } from "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPHomeSponsors.vue";
+import { default as default9 } from "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPDocAsideSponsors.vue";
+import { default as default10 } from "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPSponsors.vue";
+import { default as default11 } from "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPTeamPage.vue";
+import { default as default12 } from "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageTitle.vue";
+import { default as default13 } from "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPTeamPageSection.vue";
+import { default as default14 } from "C:/Users/Administrator/Desktop/blog-laterzc/node_modules/vitepress/dist/client/theme-default/components/VPTeamMembers.vue";
 
 // node_modules/vitepress/dist/client/theme-default/support/utils.js
 import { withBase } from "vitepress";

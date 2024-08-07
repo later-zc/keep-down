@@ -8,6 +8,7 @@ export default defineConfig({
   description: 'A VitePress Site',
   srcDir: './src/docs',
   base: '/blog-laterzc/',
+  head: [['link', { rel: 'icon', href: '/blog-laterzc/favicon.ico' }]],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav,
