@@ -14,5 +14,14 @@ export default [
       },
     ],
   },
-  { text: '后端其修远兮', link: '/back-end/' },
+  {
+    text: '后端其修远兮',
+    items: [
+      {
+        text: 'Java',
+        link: '/back-end/Java/01_Java基础/01. Java语言概述',
+        activeMatch: '/back-end/Java/',
+      }
+    ]
+  },
 ]
