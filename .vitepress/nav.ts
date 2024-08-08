@@ -19,9 +19,9 @@ export default [
     items: [
       {
         text: 'Java',
-        link: '/back-end/Java/01_Java基础/01. Java语言概述',
-        activeMatch: '/back-end/Java/',
-      }
-    ]
+        link: '/back-end/java/01_Java基础/01. Java语言概述',
+        activeMatch: '/back-end/java/',
+      },
+    ],
   },
 ]

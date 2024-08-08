@@ -1,4 +1,4 @@
-import {$BACK_END_PATH_01, $FRONT_END_PATH_01} from '../src/constants/base-path'
+import { $BACK_END_PATH_01, $FRONT_END_PATH_01 } from '../src/constants/base-path'
 
 const sidebar = {
   // {
@@ -30,7 +30,7 @@ const sidebar = {
       ],
     },
   ],
-  '/back-end/Java': [
+  '/back-end/java': [
     {
       items: [
         {
@@ -39,13 +39,13 @@ const sidebar = {
           items: [
             {
               text: '01. Java语言概述',
-              link: `${$BACK_END_PATH_01[0]}01. Java语言概述`
-            }
-          ]
-        }
-      ]
-    }
-  ]
+              link: `${$BACK_END_PATH_01[0]}01. Java语言概述`,
+            },
+          ],
+        },
+      ],
+    },
+  ],
 }
 
 export default sidebar
