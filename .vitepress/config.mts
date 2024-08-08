@@ -4,8 +4,8 @@ import sidebar from './sidebar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: 'My Awesome Project',
-  description: 'A VitePress Site',
+  title: 'later-zc的知识笔记',
+  description: 'later-zc 的知识笔记，包含Web前端、后端的开发知识',
   srcDir: './src/docs',
   base: '/blog-laterzc/',
   head: [['link', { rel: 'icon', href: '/blog-laterzc/favicon.ico' }]],
