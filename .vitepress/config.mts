@@ -5,8 +5,8 @@ import sidebar from './sidebar'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'later-zc的知识笔记',
-  description: 'later-zc 的知识笔记，包含Web前端、后端的开发知识',
-  srcDir: './src/docs',
+  description: 'later-zc 的知识笔记，包含前后端常用基础知识、踩坑记录、开发心得等',
+  srcDir: './src',
   base: '/blog-laterzc/',
   head: [['link', { rel: 'icon', href: '/blog-laterzc/favicon.ico' }]],
   cleanUrls: true,
@@ -32,7 +32,7 @@ export default defineConfig({
     logo: '/logo.png',
 
     editLink: {
-      pattern: 'https://github.com/later-zc/blog-laterzc/tree/main/src/docs/:path',
+      pattern: 'https://github.com/later-zc/blog-laterzc/tree/main/src/:path',
       text: '在 GitHub 上编辑此页',
     },
 
