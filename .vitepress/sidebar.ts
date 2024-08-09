@@ -1,5 +1,10 @@
+import path from "node:path"
 import { $BACK_END_PATH_01, $FRONT_END_PATH_01 } from '../src/constants/base-path'
+import {getAllFiles} from "../src/utils";
 
+/**
+ * @description 侧边栏配置
+ */
 const sidebar = {
   // {
   //   text: 'Examples',
@@ -47,5 +52,50 @@ const sidebar = {
     },
   ],
 }
+
+const sidebarDirConfigList = [
+    '/front-end/语言框架基础',
+    '/front-end/坑坑洼洼不少',
+    '/back-end/java',
+]
+
+sidebarDirConfigList.forEach(sidebarItem => {
+  const sidebarItemDirectoryPath = path.join(__dirname, `../src${sidebarItem}`)
+  const sidebarItemAllFiles = getAllFiles(sidebarItemDirectoryPath)
+  // 动态获取平台路径分隔符，并生成正则表达式
+  const platFormSeparator = path.sep.replace(/\\/g, '\\\\'); // 转义反斜杠以适配正则表达式
+  const regex = new RegExp(`${platFormSeparator}src(?<relativePath>.*)`);
+  // 处理路径，使用正则表达式匹配并提取 `src` 后面的路径
+  const relativePaths = sidebarItemAllFiles.map(filePath => filePath?.match(regex)?.groups?.relativePath ?? filePath);
+  // const items = []
+  //
+  // // @ts-ignore
+  // sidebar[sidebarItem] = [
+  //   {
+  //     items
+  //   }
+  // ]
+})
+
+const directoryPath = path.join(__dirname, '../src/front-end/语言框架基础')
+console.log('🌈🌈🌈 directoryPath: ', directoryPath)
+
+const allFiles = getAllFiles(directoryPath)
+console.log('🌈🌈🌈 allFiles: ', allFiles)
+// 动态获取平台路径分隔符，并生成正则表达式
+const sep = path.sep.replace(/\\/g, '\\\\'); // 转义反斜杠以适配正则表达式
+const regex = new RegExp(`${sep}src(?<relativePath>.*)`);
+
+// 处理路径，使用正则表达式匹配并提取 `src` 后面的路径
+const relativePaths = allFiles.map(filePath => {
+  const match = filePath.match(regex);
+  return match ? match?.groups?.relativePath : filePath;
+});
+console.log('🌈🌈🌈 relativePaths: ', relativePaths)
+// 匹配以.md结尾的文件名和所在上级目录文件夹名
+const fileNameRegex = new RegExp(`(?<directory>[^${sep}]+)${sep}(?<fileName>[^${sep}]+(?=\.md$))`)
+const fileNames = relativePaths.map(i => i?.match(fileNameRegex)?.groups)
+console.log('🌈🌈🌈 fileNames: ', fileNames)
+
 
 export default sidebar
