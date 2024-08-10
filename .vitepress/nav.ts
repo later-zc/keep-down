@@ -9,7 +9,7 @@ export default [
       },
       {
         text: '坑坑洼洼不少',
-        link: '/front-end/坑坑洼洼不少',
+        link: '/front-end/坑坑洼洼不少/test/test01',
         activeMatch: '/front-end/坑坑洼洼不少/',
       },
     ],

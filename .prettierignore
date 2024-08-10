@@ -1,0 +1,9 @@
+/dist/*
+/.vitepress/cache
+/.vitepress/dist
+/node_modules/**
+
+**/*.svg
+**/*.sh
+
+/src/public/*
