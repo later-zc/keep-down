@@ -26,20 +26,13 @@ sidebarDirConfigList.forEach((sidebarItem) => {
   // 匹配以.md结尾的文件名和所在上级目录文件夹名
   const fileNameRegex = new RegExp(`(?<directory>[^${sep}]+)${sep}(?<fileName>[^${sep}]+(?=\.md$))`)
   const fileNames = relativePaths.map((i) => ({
-    link: i,
+    link: i.replace(/\\/g, '/'), // 转换成/以匹配url
     ...(i?.match(fileNameRegex)?.groups as {
       directory: string
       fileName: string
     })
   }))
-  // const directoryList: any[] = []
-  // fileNames.forEach((i) => {
-  //   if (i.directory && !directoryList.includes(i.directory)) {
-  //     directoryList.push(i.directory)
-  //   }
-  // })
 
-  console.log('🌈🌈🌈 fileNames: ', fileNames)
   sidebar[sidebarItem] = [
     {
       items: fileNames
