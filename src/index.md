@@ -14,7 +14,7 @@ hero:
       link: /guide/getting-started
     - theme: alt
       text: GitHub
-      link: https://github.com/later-zc/blog-laterzc
+      link: https://github.com/later-zc/keep-down
 
 features:
   - title: 'Vite: 无可比拟的开发体验'
