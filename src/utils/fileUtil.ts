@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
-interface TGetAllFilesOptions {
+interface IGetAllFilesOptions {
     filter?: RegExp | string | undefined
     fileList?: string[]
 }
@@ -14,7 +14,7 @@ interface TGetAllFilesOptions {
  * @param {RegExp | string | undefined} [options.filter] 过滤规则
  * @returns {string[]} 返回所有文件路径的数组
  */
-export function getAllFiles(dir: string, { filter, fileList = []}: TGetAllFilesOptions = {}): string[] {
+export function getAllFiles(dir: string, { filter, fileList = []}: IGetAllFilesOptions = {}): string[] {
     const files = fs.readdirSync(dir)
     files.forEach(file => {
         const filePath = path.join(dir, file)
