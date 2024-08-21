@@ -4,12 +4,12 @@ export default [
     items: [
       {
         text: '语言框架基础',
-        link: '/front-end/语言框架基础/01_HTML+CSS/01. 网页显示过程、浏览器内核、为什么需要做适配',
+        link: '/front-end/语言框架基础/READEME.md',
         activeMatch: '/front-end/语言框架基础/',
       },
       {
         text: '坑坑洼洼不少',
-        link: '/front-end/坑坑洼洼不少/test/test01',
+        link: '/front-end/坑坑洼洼不少/READEME.md',
         activeMatch: '/front-end/坑坑洼洼不少/',
       },
     ],
@@ -19,7 +19,7 @@ export default [
     items: [
       {
         text: 'Java',
-        link: '/back-end/java/01_Java基础/01. Java语言概述',
+        link: '/back-end/java/READEME.md',
         activeMatch: '/back-end/java/',
       },
     ],

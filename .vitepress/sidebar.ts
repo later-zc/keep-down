@@ -14,7 +14,7 @@ const sidebarDirConfigList = [
 sidebarDirConfigList.forEach((sidebarItem) => {
   const sidebarItemDirectoryPath = path.join(__dirname, `../src${sidebarItem}`)
   const sidebarItemAllFiles = getAllFiles(sidebarItemDirectoryPath, {
-    filter: 'assets'
+    filter: /assets|READEME/i
   })
   // 动态获取平台路径分隔符，并生成正则表达式
   const sep = path.sep.replace(/\\/g, '\\\\') // 转义反斜杠以适配正则表达式
@@ -44,7 +44,7 @@ sidebarDirConfigList.forEach((sidebarItem) => {
         }, [])
         .map((i) => ({
           text: i,
-          collapsed: false,
+          collapsed: true,
           items: fileNames
             .filter((j) => j.directory === i)
             .map((j) => ({
