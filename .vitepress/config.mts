@@ -10,6 +10,19 @@ export default defineConfig({
   base: '/keep-down/',
   head: [['link', { rel: 'icon', href: '/keep-down/favicon.ico' }]],
   cleanUrls: true,
+  markdown: {
+    container: {
+      tipLabel: '提示',
+      warningLabel: '注意',
+      dangerLabel: '警告',
+      infoLabel: '信息',
+      detailsLabel: '详细信息'
+    },
+    image: {
+      // 默认禁用图片懒加载
+      lazyLoading: true
+    }
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav,
