@@ -8,7 +8,7 @@
 `setTimeout`、`setInterval` 是 JavaScript 中常用的定时器函数，分别用于延时执行和周期性执行回调函数。`requestAnimationFrame` 是一个用于执行高性能动画的方法，系统会在下次重绘之前调用指定的回调函数。
 :::
 
-##  一. setTimeout 中 this 指向
+##  setTimeout 中 this 指向
 ::: tip 
 - 回调函数传参形式这里以普通函数为例，箭头函数由于不绑定 this，自然就没有 this，而是从上下文查找 this，就不考虑在内。
   - **全局顶级作用域下 this 指向**
@@ -24,20 +24,20 @@
   :::
 
 
-### 1. 在 浏览器 环境中
+### 在 浏览器 环境中
 ```javascript
 setTimeout(function () {
    console.log(this === window) // true（无论是否在严格模式下，结果都是一致）
 }, 100)
 ```
-### 2. 在 Node.js 环境中
+### 在 Node.js 环境中
 ```javascript
 const timer = setTimeout(function () {
    console.log(this === timer) // true（无论是否在严格模式下，结果都是一致）
 }, 100)
 ```
 
-## 二. 改变 setTimeout 中 this 指向
+## 改变 setTimeout 中 this 指向
 
 ::: warning 
 本节讨论内容和代码运行的环境，仅限在浏览器环境中。
@@ -58,7 +58,7 @@ const myClassInstance = new MyClass()
 
 **应对方法：**
 
-### 1. 使用箭头函数
+### 方式一：使用箭头函数
 箭头函数不会创建自己的 `this`，而是捕获其所在上下文中的 `this`。
 
    ```javascript
@@ -72,7 +72,7 @@ const myClassInstance = new MyClass()
    const myClassInstance = new MyClass();
    ```
 
-### 2. 使用 `.bind()` 方法
+### 方式二：使用 `.bind()` 方法
 可以使用 `.bind()` 方法显式地将 `this` 绑定到回调函数。
 
    ```javascript
@@ -86,7 +86,7 @@ const myClassInstance = new MyClass()
    const myClassInstance = new MyClass();
    ```
 
-### 3. 传统方法：保存 `this` 的引用
+### 方式三：传统方法：保存 `this` 的引用
 在函数外部将 `this` 赋值给一个变量，然后在回调函数中引用该变量。
 
    ```javascript

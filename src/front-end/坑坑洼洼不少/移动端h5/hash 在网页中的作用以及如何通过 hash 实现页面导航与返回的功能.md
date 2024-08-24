@@ -1,13 +1,13 @@
 # hash 在网页中的作用以及如何通过 hash 实现页面导航与返回的功能
 
-## 一. 前言
+## 前言
 
 ::: info 背景
 在某万家焕乡 h5 项目中，在 a 页面中点击打开 b 页面后，客户希望通过安卓手机自带的右滑操作返回 a 页面，在安卓设备中，是通过屏幕滑动返回，而 iOS 中是通过网页底部导航栏返回，
 讨论采用监听 hash 改变的方式来实现页面导航与返回的功能。
 :::
 
-## 二. hash
+## hash
 
 ### 1. `#` 的含义
 
@@ -81,7 +81,7 @@ window.location.hash 这个属性可读写
 
 
 
-## 三. 解决方案
+## 解决方案
 
 所以我们在点击打开 b 页面时，先通过 `window.location.hash = '#pageId'`， 给浏览器增加一条历史记录，再在 b 页面 初始化时，绑定监听器，
 `window.addEventListenetr('hashchange', this.hashChange)` 当用户在 b 页面右滑返回操作时，会触发 `hashChange` 事件，
