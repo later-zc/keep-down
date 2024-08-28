@@ -19,14 +19,12 @@ export default defineConfig({
       detailsLabel: '详细信息'
     },
     image: {
-      // 默认禁用图片懒加载
-      lazyLoading: true
+      lazyLoading: true // 默认禁用图片懒加载
     }
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav,
-
     sidebar,
     outline: {
       label: '目录',
@@ -43,12 +41,14 @@ export default defineConfig({
       provider: 'local',
     },
     logo: '/logo.png',
-
     editLink: {
       pattern: 'https://github.com/later-zc/keep-down/tree/main/src/:path',
       text: '在 GitHub 上编辑此页',
     },
-
     socialLinks: [{ icon: 'github', link: 'https://github.com/later-zc/keep-down' }],
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2024-present later-zc'
+    },
   },
 })
