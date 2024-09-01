@@ -4,7 +4,7 @@
 
 - 文件目录结构如图：
 
-  <img src="assets/image-20230424134904568.png" alt="image-20230424134904568" style="zoom:80%;" /><img src="assets/image-20230424134936427.png" alt="image-20230424134936427" style="zoom:80%;" />
+  <img src="./assets/image-20230424134904568.png" alt="image-20230424134904568" style="zoom:80%;" /><img src="./assets/image-20230424134936427.png" alt="image-20230424134936427" style="zoom:80%;" />
 
   ```js
   // main.js
@@ -32,7 +32,7 @@
 
 - 执行结果：
 
-  <img src="assets/image-20230424135412585.png" alt="image-20230424135412585" style="zoom:80%;" />
+  <img src="./assets/image-20230424135412585.png" alt="image-20230424135412585" style="zoom:80%;" />
 
 - 说没有这样的文件或目录
 
@@ -60,7 +60,7 @@
     + const b = fs.readFileSync('./src/b.js')
     ```
 
-    <img src="assets/image-20230424140222308.png" alt="image-20230424140222308" style="zoom:80%;" />
+    <img src="./assets/image-20230424140222308.png" alt="image-20230424140222308" style="zoom:80%;" />
 
 - 方式二（推荐）：
 
@@ -76,7 +76,7 @@
     console.log('a ~')
     ```
 
-    <img src="assets/image-20230424140824767.png" alt="image-20230424140824767" style="zoom:80%;" />
+    <img src="./assets/image-20230424140824767.png" alt="image-20230424140824767" style="zoom:80%;" />
 
 
 
