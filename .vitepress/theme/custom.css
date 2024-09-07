@@ -1,0 +1,8 @@
+.vp-doc h1 {
+    margin: 88px 0 32px !important;
+}
+
+/*文章的第一个元素，一般是标题，自然文章的第一个标题就不需要 margin-top 了*/
+.vp-doc > div > :first-child {
+    margin-top: 0 !important;
+}
