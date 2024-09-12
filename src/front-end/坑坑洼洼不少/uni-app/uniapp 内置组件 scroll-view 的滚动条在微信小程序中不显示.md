@@ -1,10 +1,10 @@
-# 解决 uniapp 内置组件 scroll-view 的滚动条在微信小程序中的显示问题
+# 解决 uniapp 内置组件 scroll-view 的滚动条在微信小程序中的不显示的问题
 ::: info 引言
 在使用 uniapp 开发跨平台应用时，可能会遇到滚动条不显示的问题。尤其是在 scroll-view 组件中，由于不同平台对组件属性支持的差异，导致滚动条的显隐控制存在不一致。
 :::
 
 ## 前言
-在使用 `uniapp` 开发微信小程序时，内置组件 `scroll-view` 的滚动条在微信小程序中不显示，查看[组件文档](https://uniapp.dcloud.net.cn/component/scroll-view.html#%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E)，
+在使用 `uniapp` 开发微信小程序时，**内置组件 `scroll-view` 的滚动条在微信小程序中不显示**，查看[组件文档](https://uniapp.dcloud.net.cn/component/scroll-view.html#%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E)，
 有个组件属性 `show-scrollbar`：控制是否出现滚动条，默认 `false`，但是却只支持 `App-nvue 2.1.5+` 的环境。
 
 对此感到很奇怪，为什么会不支持微信小程序？ 于是，查看微信小程序的 `scroll-view` 组件，发现也有 `show-scrollbar` 属性，默认 `false`，滚动条显隐控制 (同时开启 `enhanced` 属性后生效。
