@@ -65,16 +65,16 @@
   - 测试结果：
 
     - `chrome devtool`：移动端中 `click` 事件触发有 `300ms` 延迟
-
-      <img src="assets/image-20230402010821499.png" alt="image-20230402010821499" style="zoom: 80%;" />
+    
+      <img src="./assets/image-20230402010821499.png" alt="image-20230402010821499" style="zoom: 80%;" />
 
     - 安卓`v12`真机 => 微信`v8.0.33`内置浏览器：无 `300ms` 延迟，推测微信内部有解决问题
 
-      <img src="assets/image-20230402012150915.png" alt="image-20230402012150913" style="zoom:80%;" />
+      <img src="./assets/image-20230402012150915.png" alt="image-20230402012150913" style="zoom:80%;" />
 
     - 安卓`v12`真机 => 默认浏览器：有 `300ms` 延迟
 
-      <img src="assets/image-20230402012013369.png" alt="image-20230402012013369" style="zoom:80%;" />
+      <img src="./assets/image-20230402012013369.png" alt="image-20230402012013369" style="zoom:80%;" />
 
 
 
