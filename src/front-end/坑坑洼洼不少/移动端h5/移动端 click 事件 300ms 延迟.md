@@ -49,7 +49,7 @@
           var div = document.createElement("div")
           div.innerHTML = `${+new Date()} —— ${+new Date() - startTime} —— ${e.type}`
           document.body.appendChild(div)
-        };
+        }
   
         var box = document.querySelector('.box')
         box.addEventListener('mousedown', printInfo) // 鼠标按下
