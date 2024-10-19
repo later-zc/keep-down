@@ -4,7 +4,7 @@ import sidebar from './sidebar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: 'later-zc的知识笔记',
+  title: 'later-zc Knowledge notes',
   description: 'later-zc 的知识笔记，包含前后端常用基础知识、踩坑记录、开发心得等',
   srcDir: './src',
   base: '/keep-down/',
