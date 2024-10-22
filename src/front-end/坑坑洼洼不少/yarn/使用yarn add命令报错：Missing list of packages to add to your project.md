@@ -4,7 +4,7 @@
 
 - 在做一个外包项目的时候，人家用的包管理工具是 `yarn`，一上来不得先安装下所有依赖嘛，然后就如下：
 
-  <img src="../../../前端路漫漫/坑坑洼洼不少/yarn/assets/image-20230218003520528.png" alt="image-20230218003520528" style="zoom:80%;" />
+  <img src="./assets/image-20230218003520528.png" alt="image-20230218003520528" style="zoom:80%;" />
 
 
 
@@ -32,4 +32,3 @@
   yarn install
   ```
 
-  
