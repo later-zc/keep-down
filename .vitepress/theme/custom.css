@@ -6,3 +6,17 @@
 .vp-doc > div > :first-child {
     margin-top: 0 !important;
 }
+
+.vp-doc h2 {
+    counter-reset: h3-counter; /* 创建一个名为 h3-counter 的计数器 */
+}
+.vp-doc h3 {
+    font-size: 17px;
+}
+/* 为.vp-doc 下每个 h3 元素增加计数器并设置内容 */
+.vp-doc h3::before {
+    counter-increment: h3-counter; /* 每个 h3 元素递增计数器 */
+    content: counter(h3-counter) ". "; /* 使用计数器作为前缀 */
+    font-weight: bold; /* 可以根据需求修改样式 */
+}
+
