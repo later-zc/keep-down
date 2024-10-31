@@ -10,6 +10,7 @@ export default defineConfig({
   base: '/keep-down/',
   head: [['link', { rel: 'icon', href: '/keep-down/favicon.ico' }]],
   cleanUrls: true,
+  ignoreDeadLinks: true,
   markdown: {
     container: {
       tipLabel: '提示',
