@@ -19,9 +19,10 @@ export default defineConfig({
       infoLabel: '信息',
       detailsLabel: '详细信息'
     },
-    image: {
-      lazyLoading: true // 默认禁用图片懒加载
-    }
+    // image: {
+    //   lazyLoading: true // 默认禁用图片懒加载
+    // },
+    theme: 'one-dark-pro'
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

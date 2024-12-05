@@ -20,3 +20,16 @@
     font-weight: bold; /* 可以根据需求修改样式 */
 }
 
+/* 针对 vitepress markdown 的theme的light模式的主题配置背景色无效的问题单独做的调整 等待官方更新修复 */
+.vp-doc pre {
+    background-color: rgb(40, 44, 52) !important;
+}
+.vp-doc .copy[title='Copy Code'] {
+    background-color: #343848 !important;
+    border-color: #343848 !important;
+}
+.vp-doc span.lang {
+    color: rgb(171, 178, 191) !important;
+}
+
+
