@@ -21,19 +21,19 @@
       - 在草率模式下，像f()这样的函数调用会将全局对象作为this值传递。在严格模式下，它现在是undefined 。当使用call或apply调用函数时，如果该值是原始值，则该值将被装箱到一个对象中（或undefined和null全局对象）。严格模式下，直接传递值，不进行转换或替换。
     :::
     - **Node.js** 中，严格模式下指向 `undefined`，非严格模式下指向 `global`
-  :::
+:::
 
 
 ### 在 浏览器 环境中
 ```javascript
 setTimeout(function () {
-   console.log(this === window) // true（无论是否在严格模式下，结果都是一致）
+  console.log(this === window) // true（无论是否在严格模式下，结果都是一致）
 }, 100)
 ```
 ### 在 Node.js 环境中
 ```javascript
 const timer = setTimeout(function () {
-   console.log(this === timer) // true（无论是否在严格模式下，结果都是一致）
+  console.log(this === timer) // true（无论是否在严格模式下，结果都是一致）
 }, 100)
 ```
 
@@ -45,10 +45,10 @@ const timer = setTimeout(function () {
 
 ```javascript
 function MyClass() {
-    this.name = "MyClass"
-    setTimeout(function() {
-        console.log(this.name) // 输出：""（无论是否在严格模式下）// [!code highlight]
-    }, 1000)
+  this.name = "MyClass"
+  setTimeout(function() {
+    console.log(this.name) // 输出：""（无论是否在严格模式下）// [!code highlight]
+  }, 1000)
 }
 
 const myClassInstance = new MyClass()
@@ -63,10 +63,10 @@ const myClassInstance = new MyClass()
 
    ```javascript
    function MyClass() {
-       this.name = "MyClass";
-       setTimeout(() => {
-           console.log(this.name); // 输出 "MyClass"
-       }, 1000);
+     this.name = "MyClass";
+     setTimeout(() => {
+       console.log(this.name); // 输出 "MyClass"
+     }, 1000);
    }
 
    const myClassInstance = new MyClass();

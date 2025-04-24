@@ -32,4 +32,15 @@
     color: rgb(171, 178, 191) !important;
 }
 
+/* 控制正文内容区域 */
+.content-container {
+    max-width: 1024px !important;
+}
+
+/* 让所有表格横向可滚动 */
+.content-container table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
 
