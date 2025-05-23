@@ -32,6 +32,11 @@
     color: rgb(171, 178, 191) !important;
 }
 
+/*markdown li与li之间的间距*/
+.vp-doc li + li {
+    margin-top: 1.2em !important;
+}
+
 /* 控制正文内容区域 */
 .content-container {
     max-width: 1024px !important;
