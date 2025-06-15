@@ -14,7 +14,7 @@ export default defineConfig({
   markdown: {
     container: {
       tipLabel: '提示',
-      warningLabel: '注意',
+      warningLabel: '⚠️ 注意',
       dangerLabel: '警告',
       infoLabel: '前言',
       detailsLabel: '详细信息'
