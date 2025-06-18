@@ -13,10 +13,10 @@ export default defineConfig({
   ignoreDeadLinks: true,
   markdown: {
     container: {
-      tipLabel: '提示',
+      tipLabel: '🔔 提示',
       warningLabel: '⚠️ 注意',
       dangerLabel: '警告',
-      infoLabel: '前言',
+      infoLabel: '引言',
       detailsLabel: '详细信息'
     },
     // image: {
