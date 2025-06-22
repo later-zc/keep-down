@@ -4,12 +4,12 @@ export default [
     items: [
       {
         text: '语言框架基础',
-        link: '/front-end/语言框架基础/READEME.md',
+        link: '/front-end/语言框架基础/README.md',
         activeMatch: '/front-end/语言框架基础/',
       },
       {
         text: '坑坑洼洼不少',
-        link: '/front-end/坑坑洼洼不少/READEME.md',
+        link: '/front-end/坑坑洼洼不少/README.md',
         activeMatch: '/front-end/坑坑洼洼不少/',
       },
     ],
@@ -19,8 +19,13 @@ export default [
     items: [
       {
         text: 'Java',
-        link: '/back-end/java/READEME.md',
+        link: '/back-end/java/README.md',
         activeMatch: '/back-end/java/',
+      },
+      {
+        text: 'Terminal',
+        link: '/back-end/terminal/README.md',
+        activeMatch: '/back-end/terminal/',
       },
     ],
   },

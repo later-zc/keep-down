@@ -49,7 +49,7 @@ export default defineConfig({
     },
     socialLinks: [{ icon: 'github', link: 'https://github.com/later-zc/keep-down' }],
     footer: {
-      message: 'Released under the MIT License.',
+      message: '如有转载或CV请标注本站原文地址',
       copyright: 'Copyright © 2024-present later-zc'
     },
   },
