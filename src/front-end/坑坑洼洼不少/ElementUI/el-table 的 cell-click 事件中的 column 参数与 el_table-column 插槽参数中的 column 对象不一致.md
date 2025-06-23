@@ -24,19 +24,20 @@
     @cell-click="handleCellClick"
   >
     <el-table-column
-      v-for="item of tableHeader"
-      :key="item"
-      :prop="item"
-      :label="item"
+      v-for="field of tableHeader"
+      :key="field"
+      :prop="field"
+      :label="field"
+      align="center"
     >
       <template v-slot="{ row, column }">
         <el-input
           v-if="column[`editable_${row.index}_${column.index}`]"
           :ref="`inputRef_${row.index}_${column.index}`"
-          v-model="row[item]"
+          v-model="row[field]"
           @blur="handleInputBlur(row, column, $event)"
         />
-        <span v-else>{{ row[item] }}</span>
+        <span v-else>{{ row[field] }}</span>
       </template>
     </el-table-column>
   </el-table>
@@ -47,7 +48,7 @@
     methods: {
       cellClassName({ row, column, rowIndex, columnIndex }) {
         // 通过cellClassName将el-table内部传递过来的rowIndex和columnIndex 添加到 row和column中
-        row.index = rowIndex 
+        row.index = rowIndex
         column.index = columnIndex
       },
       handleInputBur(row, column, event) {
@@ -73,29 +74,102 @@
 
 所以上面代码中我们做了如下操作：
 
-1. 点击的时候，需要知道点击的那个单元格，然后将 `input` 显示出来以供用户输入修改，然后在尝试的过程中，发现 `cellClick` 事件参数中获取不到点击单元格所在的 `rowIndex` 和 `columnIndex`，所以就通过通过 `cellClassName` 将 `el-table` 内部传递过来的 `rowIndex` 和 `columnIndex` 添加到 `row` 和 `column` 中。
-    ```js
-    cellClassName({ row, column, rowIndex, columnIndex }) {
-      // 通过cellClassName将el-table内部传递过来的rowIndex和columnIndex 添加到 row和column中
-      row.index = rowIndex
-      column.index = columnIndex
-    }
+1. 点击单元格的时候，需要知道点击到的是哪个单元格，然后将 `input` 显示出来供用户输入修改，
+   然后在尝试的过程中，发现 `cell-click` 事件传递的参数中获取不到点击单元格所在的 `rowIndex` 和 `columnIndex`，
+   所以就通过 el-table 传递给单元格的 className 的回调方法 `cell-class-name` 中的 `rowIndex` 和 `columnIndex` 两个参数挂载到 row 和 column 中。
+
+    ```vue
+    <template>
+      <el-table :cell-class-name="cellClassName" /> <!-- [!code focus] -->
+    </template>
+    <script>
+      export default {
+        methods: {
+          cellClassName({ row, column, rowIndex, columnIndex }) { // [!code focus:7]
+            // 
+            // 会传递 rowIndex 和 columnIndex 两个参数，将这两个参数挂载到 row 和 column 中，
+            // 后续就能通过 row.index 和 column.index 获取到每个单元格对应的坐标索引了
+            row.index = rowIndex
+            column.index = columnIndex
+          }
+        }
+      }
+    </script>
     ```
-2. 添加完成之后，`row` 和 `column` 就都有了 `index` 了，这样在 `ref` 和 `v-if` 就都有根据索引生成的变量去控制了
-   ```vue{3-4}
-   <template v-slot="{ row, column }">
-     <el-input
-       v-if="column[`editable_${row.index}_${column.index}`]"
-       :ref="`inputRef_${row.index}_${column.index}`" 
-       v-model="row[item]"
-       @blur="handleInputBlur(row, column, $event)"
-     />
-     <span v-else>{{ row[item] }}</span>
-   </template>
-   ```
+
+2. 添加完成之后，`row` 和 `column` 就都有了 `index` 了， 
+   之后就能在  `el-input` 中使用 `v-if` 根据索引生成的唯一变量去控制 input 的显隐，
+   `ref` 就能根据索引生成的唯一 ref 获取到对应的 input 元素，当点击时，就能获取到对应的 input 元素，并调用 `focus` 方法，将 input 聚焦起来
+   
+    ```vue {11-12}
+    <template>
+      <el-table-column
+        v-for="field of tableHeader"
+        :key="field"
+        :prop="field"
+        :label="field"
+        align="center"
+      >
+        <template v-slot="{ row, column }">
+          <el-input
+            v-if="column[`editable_${row.index}_${column.index}`]"
+            :ref="`inputRef_${row.index}_${column.index}`"
+            v-model="row[field]"
+            @blur="handleInputBlur(row, column, $event)"
+          />
+          <span v-else>{{ row[field] }}</span>
+        </template>
+      </el-table-column>
+    </template>
+    ```
+   
 3. 我们就只需要点击的时候，拿到 `row` 和 `column` 的索引获取对应的变量，然后改变对应 `v-if` 的变量即可，但是我们是绑定在每一个 `column` 中，
-在实际过程中发现 `el-tabled` 的 `cell-click` 事件参数 `column` 与 `el_table-column` 插槽参数中的 `column` 不是同一个对象。
-这就导致 `input` 的 `blur` 事件处理的时候，无法将 `cell-click` 事件参数中的 `column` 变量隐藏,
+   在实际过程中发现 `el-tabled` 的 `cell-click` 事件参数 `column` 与 `el_table-column` 插槽参数中的 `column` 不是同一个对象。
+   这就导致 `input` 的 `blur` 事件处理的时候，无法将 `cell-click` 事件参数中的 `column` 变量隐藏
+
+    ```vue {14}
+    <template>
+      <el-table-column
+          v-for="field of tableHeader"
+          :key="field"
+          :prop="field"
+          :label="field"
+          align="center"
+        >
+        <template v-slot="{ row, column }">
+          <el-input
+            v-if="column[`editable_${row.index}_${column.index}`]"
+            :ref="`inputRef_${row.index}_${column.index}`"
+            v-model="row[field]"
+            @blur="handleInputBlur(row, column, $event)"
+          />
+          <span v-else>{{ row[field] }}</span>
+        </template>
+      </el-table-column>
+    </template>
+    <script>
+    export default {
+      methods: {
+        handleInputBur(row, column, event) {
+          console.log(column == this.currentEditableColumn) // false
+          const inputRef = this.$refs[`inputRef_${row.index}_${column.index}`][0]
+          inputRef.blur()
+          // 删除失去焦点的input的ref和所添加editable属性
+          // Vue.delete，删除对象的 property。如果对象是响应式的，确保删除能触发更新视图。这个方法主要用于避开 Vue 不能检测到 property 被删除的限制
+          this.$delete(this.currentEditableColumn, `editable_${row.index}_${column.index}`)
+          this.$nextTick(() => this.$delete(this.$refs, `inputRef_${row.index}_${column.index}`))
+        },
+        handleCellClick(row, column, cell, event) {
+          this.$set(column, [`editable_${row.index}_${column.index}`], true) // 要用Vue.set方法去修改，不然不会更新，因为el-table-column组件及其作用域插槽中相关的一些变量及其所处的上下文，导致对一些属性操作是不具备响应式的
+          this.$nextTick(() => {
+            const inputRef = this.$refs[`inputRef_${row.index}_${column.index}`][0]
+            inputRef.focus()
+          })
+        }
+      }
+    }
+    </script>
+    ```
 
 
 
@@ -105,36 +179,36 @@
 ::: details 最终代码
   ```js
   export default {
-    data() {
-      return {
-        currentEditableColumn: null, // 记录当前可编辑的列的所绑定column对象，为了解决el-table的cell-click事件传递的column参数和el-table-column中默认插槽中的column对象不同
-      }  
+  data() {
+    return {
+      currentEditableColumn: null, // 记录当前可编辑的列的所绑定column对象，为了解决el-table的cell-click事件传递的column参数和el-table-column中默认插槽中的column对象不同
+    }
+  },
+  methods: {
+    cellClassName({ row, column, rowIndex, columnIndex }) {
+      // 通过cellClassName将el-table内部传递过来的rowIndex和columnIndex 添加到 row和column中
+      row.index = rowIndex
+      column.index = columnIndex
     },
-    methods: {
-      cellClassName({ row, column, rowIndex, columnIndex }) {
-        // 通过cellClassName将el-table内部传递过来的rowIndex和columnIndex 添加到 row和column中
-        row.index = rowIndex 
-        column.index = columnIndex
-      },
-      handleInputBur(row, column, event) {
-        console.log(column == this.currentEditableColumn) // false
+    handleInputBur(row, column, event) {
+      console.log(column == this.currentEditableColumn) // false
+      const inputRef = this.$refs[`inputRef_${row.index}_${column.index}`][0]
+      inputRef.blur()
+      // 删除失去焦点的input的ref和所添加editable属性
+      // Vue.delete，删除对象的 property。如果对象是响应式的，确保删除能触发更新视图。这个方法主要用于避开 Vue 不能检测到 property 被删除的限制
+      this.$delete(this.currentEditableColumn, `editable_${row.index}_${column.index}`)
+      this.$nextTick(() => this.$delete(this.$refs, `inputRef_${row.index}_${column.index}`))
+    },
+    handleCellClick(row, column, cell, event) {
+      this.currentEditableColumn = column // 保存引用
+      this.$set(column, [`editable_${row.index}_${column.index}`], true) // 要用Vue.set方法去修改，不然不会更新，因为el-table-column组件及其作用域插槽中相关的一些变量及其所处的上下文，导致对一些属性操作是不具备响应式的
+      this.$nextTick(() => {
         const inputRef = this.$refs[`inputRef_${row.index}_${column.index}`][0]
-        inputRef.blur()
-        // 删除失去焦点的input的ref和所添加editable属性
-        // Vue.delete，删除对象的 property。如果对象是响应式的，确保删除能触发更新视图。这个方法主要用于避开 Vue 不能检测到 property 被删除的限制
-        this.$delete(this.currentEditableColumn, `editable_${row.index}_${column.index}`)
-        this.$nextTick(() => this.$delete(this.$refs, `inputRef_${row.index}_${column.index}`))
-      },
-      handleCellClick(row, column, cell, event) {
-        this.currentEditableColumn = column // 保存引用
-        this.$set(column, [`editable_${row.index}_${column.index}`], true) // 要用Vue.set方法去修改，不然不会更新，因为el-table-column组件及其作用域插槽中相关的一些变量及其所处的上下文，导致对一些属性操作是不具备响应式的
-        this.$nextTick(() => {
-          const inputRef = this.$refs[`inputRef_${row.index}_${column.index}`][0]
-          inputRef.focus()
-        })
-      }
+        inputRef.focus()
+      })
     }
   }
+}
   ```
 :::
 
