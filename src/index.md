@@ -45,6 +45,6 @@ features:
   - icon: 💻
     title: Terminal<small>（命令行）</small>
     details: 黑底白字的世界，也藏着高效与优雅
-    link: /tools/terminal/README
+    link: /back-end/terminal/README
     linkText: 命令行的艺术与实践
 ---
