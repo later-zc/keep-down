@@ -91,12 +91,23 @@ nano 是一个基于命令行的文本编辑器，旨在提供比 vi 更易上�
 
 
 ## macOS 专属说明
-**mac 键盘快捷键映射说明：**
-> mac 上的 Option 键即为终端中的 Meta（对应 nano 中的 Alt）。
+::: info
+macOS 终端默认 Option (⌥) 键不作为 Meta 键（对应 windows下 nano 中的 Alt）。
 
-> 如果 Alt + 键 无效： 
-  > - 打开 Terminal 偏好设置
-  > - 勾选 "Use Option as Meta key" (将 Option 键用作 Meta 键)
+macOS 用户务必设置 Option 为 Meta，避免`Option + U`（撤销）、`Option + 6`（复制行）等快捷键失效。
+:::
+
+**Terminal.app**
+> 1. 打开 Terminal
+> 2. 菜单栏选择 `Terminal > Settings > Profiles > Keyboard`
+> 3. 勾选 ✅ `Use Option as Meta key`
+
+**iTerm2**
+> 1. 打开 iTerm2
+> 2. 进入 `Preferences > Profiles > Keys`
+> 3. 设置 `Left Option key acts as: Meta`
+
+配置完成后，即可使用 `Option + U`（撤销）、`Option + 6`（复制行）等快捷键。
 
 
 
