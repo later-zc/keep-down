@@ -290,7 +290,7 @@ el-dialog 组件源码中 destroy-on-close 的实现方式是：
       v-show="visible"
       class="el-dialog__wrapper"
       @click.self="handleWrapperClick">
-      <!-- key --> <!-- [!code focus:4] -->
+      <!-- key 变化会导致元素被替换，新的元素会被创建 --> <!-- [!code focus:4] -->
       <div
         role="dialog"
         :key="key"
@@ -340,7 +340,7 @@ export default {
       } else {
         this.$el.removeEventListener('scroll', this.updatePopper);
         if (!this.closed) this.$emit('close');
-        // visible 关闭时触发 // [!code focus:6]
+        // visible 关闭时修改绑定的 key，key 变化导致组件重建 // [!code focus:6]
         if (this.destroyOnClose) { 
           this.$nextTick(() => {
             this.key++;
@@ -364,7 +364,7 @@ created[新] → destroyed[旧] → mounted[新]
 ```
 
 **带来预期之外的副作用**  
-1. 关闭时 created、mounted 等钩子意外触发：子组件中的 created、mounted 等钩子通常包含初始化逻辑，预期行为是在父组件中访问时创建，但实际却是在 el-dialog 的 visible 关闭时触发，不符合预期行为。
+1. 如果传递给 dialog 默认插槽的是组件，当 dialog 关闭时会修改 key，从而该组件的 created、mounted 等钩子会意外触发：子组件中的 created、mounted 等钩子通常包含初始化逻辑，预期行为是在 dialog 的 visible 打开时创建，但实际却是在 dialog 的 visible 关闭时触发，不符合预期行为。
 2. 生命周期错位问题：外部父组件可能有一些生命周期钩子，在 visible 关闭时，这些钩子会意外触发，导致一些问题。而在 visible 打开时，本该触发的 created 等钩子却不触发。
 
 
