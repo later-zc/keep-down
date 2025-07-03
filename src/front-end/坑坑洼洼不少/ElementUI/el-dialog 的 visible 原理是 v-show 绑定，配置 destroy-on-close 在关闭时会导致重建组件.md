@@ -1,34 +1,34 @@
-# el-dialog 的 visible 属性只负责组件显隐，并不会导致销毁或重新创建，destroy-on-close 在关闭时会修改 key 而触发 vue 渲染机制导致销毁原组件的同时会意外创建新实例（执行顺序：created[新] → destroyed[旧] → mounted[新]）
-
+# el-dialog 的 visible 原理是 v-show 绑定，配置 destroy-on-close 会导致在 el-dialog 的 visible 属性关闭时，会改变组件绑定的 key 从而被 vue 的虚拟 DOM 算法创建新实例来替换旧实例
 
 
 
 ## 背景
-
+::: info
 在使用 [Element UI@2.15.14（当前最新版本2025.06.09）](https://github.com/ElemeFE/element/releases/tag/v2.15.14) 的 `el-dialog` 弹窗组件时，
-我们经常会通过 :visible.sync 控制其显示与隐藏。通常开发者会默认认为「弹窗关闭」意味着其内部内容会被销毁，
-但实际情况，el-dialog 在关闭时并不会销毁插槽中的内容，这会在某些业务场景中造成数据错乱。
+我们经常会通过 :visible.sync 控制其显示与隐藏。通常开发者会默认认为「弹窗关闭」这一事件意味着弹窗组件自身会被销毁，
+但实际情况，el-dialog 在 visible 属性关闭时并不会销毁其组件实例，多次打开时，某些业务场景中就容易造成数据残存的现象。
+:::
 
 业务场景如下：
-
-> 表格每一行都有个按钮，点击时打开编辑行数据的 `el-dialog` 弹窗，内部嵌套一个子组件 `EditTable`。
+> 表格每一行都有个编辑按钮，点击按钮时，会打开编辑行数据的 `el-dialog` 弹窗，内部嵌套一个子组件 `EditTable`。
 
 ```vue
 <el-dialog title="编辑看板数据" :visible.sync="editDialogVisible">
   <EditTable v-bind="editTable" />
 </el-dialog>
 ```
-
-**预期行为**：每次弹窗打开时，都会新创建一个 EditTable 组件实例，并触发 EditTable 组件生命周期钩子（如created、mounted等），
+**预期行为**：
+> 每次弹窗打开时，都会新创建一个 EditTable 组件实例，并触发 EditTable 组件生命周期钩子（如created、mounted等），
 在钩子中发送请求并回显数据，每次弹窗关闭时，EditTable 组件都会被销毁。
 
-**实际情况**：EditTable 组件在弹窗关闭后仍然保留在 DOM 中（并未销毁），组件中的数据状态仍然保留在内存中，
-当在不同数据源的行点击按钮打开弹窗时，EditTable 组件生命周期钩子函数未触发（如 created、mounted），
-从而未执行钩子中的发送请求获取对应数据，最终组件复用引起的数据混淆等问题。
+**实际情况**：
+> EditTable 组件在弹窗关闭后仍然保留在 DOM 中（并未销毁），组件中的数据状态仍然保留在内存中，
+当在不同数据源的行点击按钮打开弹窗时，因为之前的 EditTable 组件实例并未被销毁，所以 EditTable 组件生命周期钩子函数也不会触发（如 created、mounted），
+从而未执行钩子中的发送请求获取对应数据的逻辑，最终复用同一个组件且数据还是之前残留的，这就导致了数据残留混淆等问题。
 
 
 
-## el-dialog 关闭时不会销毁内容的根本原因
+## visible 关闭时不会销毁 el-dialog 组件实例的原因
 **el-dialog 组件自身在模板中的显示与隐藏是通过 v-show 控制的，即绑定的 visible 属性**。
 > el-dialog 源码如下：
 ::: code-group
@@ -255,9 +255,9 @@
 其中通过 v-if 绑定 rendered 属性，控制默认插槽的显示与隐藏。在 mounted 钩子中，visible 为 true 时，挂载默认插槽的 DOM 节点。
 但后续整体逻辑中，并没有销毁默认插槽的 DOM 节点，而是通过 CSS 控制其显示隐藏，组件实例仍保留在内存中。
 
-在 visible 为 false 时，组件并未被卸载，只是隐藏（DOM 中加上  display: none;），因此：
+在 visible 为 false 时，组件并未被卸载，只是隐藏（DOM 中加上 display: none;），因此：
 - 组件不会重新创建，并触发生命周期钩子函数（如 created、mounted）。
-- 组件实例中的原有数据不会丢失。
+- 组件实例中的原有数据保留了下来。
 
 
 
@@ -353,14 +353,17 @@ export default {
 </script>
 ```
 :::
-**Vue 的渲染机制中，若绑定的 key 发生变化，会销毁原组件并重新创建新实例**，这正是 destroy-on-close 的本质实现方式。
-此过程将导致在每次 visible 关闭时：
-- 绑定 key 的内容中的原组件实例执行 destroyed 钩子；
-- 新创建的组件实例会重新触发 created、mounted 等生命周期钩子；
+destroy-on-close 的原理：
+> **配置 destroy-on-close 属性在 visible 关闭时，会改变 el-dialog 组件的根元素绑定的 key ，从而被 vue 的虚拟 DOM 算法创建新的 el-dialog 组件实例来替换旧实例，
+这会触发新组件的生命周期钩子（如 created / mounted 等），而替换之后的旧实例已不再被使用，自然就会被回收销毁掉。**
 
-执行顺序：
+因此回到实际业务场景中来看，传给 el-dialog 旧组件实例默认插槽的内容，也会随着 el-dialog 旧组件实例的销毁而销毁，这看上去好像是预期的效果，好像没什么问题。
+但这种方式有缺陷：
+- 每次 visible 关闭时会新创建 el-dialog 组件，这就会导致原本应该在 visible 打开时才创建组件和触发生命周期钩子并发送数据请求，却变成了在弹窗关闭时，创建新组件且触发 created、mounted 等生命周期钩子；
+
+实际测试的生命周期钩子执行顺序如下：
 ```md
-created[新] → destroyed[旧] → mounted[新]
+created[新组件实例] → destroyed[旧组件实例] → mounted[新组件实例]
 ```
 
 **带来预期之外的副作用**  
@@ -390,4 +393,4 @@ el-dialog 并不会在 visible 为 false 时自动销毁默认插槽内容，其
 这就会导致插槽中传入的子组件的 created、mounted 等钩子在 visible 打开时不会被触发，而 visible 关闭时却会触发 created、mounted 等钩子，
 造成逻辑混乱，属于 el-dialog 组件设计上的缺陷。
 
-使用者需要清楚这一行为可能引发的副作用，在更复杂的业务场景中，建议通过外部 v-if 控制插槽子组件的存在性，确保行为一致且可控。
+开发者需要清楚这一行为可能引发的副作用，在更复杂的业务场景中，建议通过外部 v-if 控制插槽子组件的存在性，确保行为一致且可控。
