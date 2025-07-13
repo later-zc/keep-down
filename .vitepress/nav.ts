@@ -29,4 +29,14 @@ export default [
       },
     ],
   },
+  {
+    text: '技术书籍',
+    items: [
+      {
+        text: '图解HTTP',
+        link: '/books/图解HTTP/README.md',
+        activeMatch: '/books/图解HTTP/'
+      }
+    ]
+  }
 ]

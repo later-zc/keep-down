@@ -10,6 +10,7 @@ const sidebarDirConfigList = [
   '/front-end/坑坑洼洼不少',
   '/back-end/java',
   '/back-end/terminal',
+  '/books/图解HTTP'
 ]
 
 sidebarDirConfigList.forEach((sidebarItem) => {
