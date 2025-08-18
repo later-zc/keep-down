@@ -36,6 +36,11 @@ export default [
         text: '图解HTTP',
         link: '/books/图解HTTP/README.md',
         activeMatch: '/books/图解HTTP/'
+      },
+      {
+        text: 'Vue.js设计与实现',
+        link: '/books/Vue.js设计与实现/README.md',
+        activeMatch: '/books/Vue.js设计与实现/'
       }
     ]
   }
