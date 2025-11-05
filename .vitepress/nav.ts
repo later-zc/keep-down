@@ -23,6 +23,11 @@ export default [
         activeMatch: '/back-end/java/',
       },
       {
+        text: 'Database',
+        link: '/back-end/database/README.md',
+        activeMatch: '/back-end/database/',
+      },
+      {
         text: 'Terminal',
         link: '/back-end/terminal/README.md',
         activeMatch: '/back-end/terminal/',
@@ -41,6 +46,16 @@ export default [
         text: 'Vue.js设计与实现',
         link: '/books/Vue.js设计与实现/README.md',
         activeMatch: '/books/Vue.js设计与实现/'
+      }
+    ]
+  },
+  {
+    text: '笔记',
+    items: [
+      {
+        text: '计算机',
+        link: '/notes/计算机/README.md',
+        activeMatch: '/notes/计算机/'
       }
     ]
   }
