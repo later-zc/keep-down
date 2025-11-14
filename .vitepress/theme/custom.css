@@ -49,3 +49,13 @@
     white-space: nowrap;
 }
 
+/*缩进 ul ol 距离*/
+.vp-doc ul, .vp-doc ol {
+    /*padding-left: 2.25rem;*/
+    padding-left: 1.65rem;
+}
+
+/*缩进 blockquote 距离*/
+.vp-doc blockquote {
+    margin-left: 0.65rem;
+}
