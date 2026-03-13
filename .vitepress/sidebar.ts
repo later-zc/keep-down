@@ -13,7 +13,8 @@ const sidebarDirConfigList = [
   '/back-end/terminal',
   '/books/图解HTTP',
   '/books/Vue.js设计与实现',
-  '/notes/计算机'
+  '/notes/计算机',
+  '/notes/驾考科目一理论'
 ]
 
 sidebarDirConfigList.forEach((sidebarItem) => {

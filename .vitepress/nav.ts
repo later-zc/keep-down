@@ -50,12 +50,17 @@ export default [
     ]
   },
   {
-    text: '笔记',
+    text: '杂项',
     items: [
       {
         text: '计算机',
         link: '/notes/计算机/README.md',
         activeMatch: '/notes/计算机/'
+      },
+      {
+        text: '驾考科目一理论',
+        link: '/notes/驾考科目一理论/README.md',
+        activeMatch: '/notes/驾考科目一理论/'
       }
     ]
   }
